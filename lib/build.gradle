@@ -1,26 +1,38 @@
+//apply plugin: 'java'
 apply plugin: 'com.android.library'
-
+//apply plugin: 'maven'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
 }
+
+//targetCompatibility = '1.7'
+//sourceCompatibility = '1.7'
+
+group = GROUP
+archivesBaseName = ARTIFACTID
+version = VERSION
+
+//[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository(url: uri('../maven'))
+//        }
+//    }
+//}
+
+apply from: '../bintray_java.gradle'
+//apply from: '../nexus_java.gradle'
